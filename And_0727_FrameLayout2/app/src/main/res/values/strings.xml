@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">And_0727_FrameLayout</string>
+    <string-array name="op">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+    </string-array>
+</resources>
