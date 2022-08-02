@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     Button btnContext, btnOption;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         super.onOptionsItemSelected(item);
 
         switch (item.getItemId()){
-            case R.id.option_login: 
+            case R.id.option_login:
                 Toast.makeText(getApplicationContext(), "로그인 선택", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.option_loginOut:
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
          super.onContextItemSelected(item);
-         
+
         switch (item.getItemId()){
             case R.id.context_man:
                 Toast.makeText(getApplicationContext(), "남자 선택", Toast.LENGTH_SHORT).show();
@@ -113,7 +114,12 @@ public class MainActivity extends AppCompatActivity {
                 dlg.setTitle("성별선택확인");
                 dlg.setIcon(R.mipmap.ic_launcher_round);
                 dlg.setMessage("여자를 선택하였습니다.");
-                dlg.setPositiveButton("확인", null);
+                dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(), "가입 완료", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 dlg.show();
                 return true;
             default:

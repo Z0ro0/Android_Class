@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         tvOX.setText("O : 맞았습니다.");
                     }else tvOX.setText("X : 틀렸습니다.");
                     btnNext.setEnabled(true);
-ㄴ                }
+                }
             }
         });
         btnNext.setOnClickListener(new View.OnClickListener() {
