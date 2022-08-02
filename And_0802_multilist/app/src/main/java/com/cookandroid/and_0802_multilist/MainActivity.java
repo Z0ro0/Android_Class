@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -55,6 +56,17 @@ public class MainActivity extends AppCompatActivity {
                     list.clearChoices();
                     adapter.notifyDataSetChanged();
                 }
+            }
+        });
+        edtAdd.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() == keyEvent.KEYCODE_ENTER) {//엔터 치면 리스트 추가
+                    data.add(edtAdd.getText().toString());
+                    adapter.notifyDataSetChanged();
+                    edtAdd.setText(" ");
+                }
+                return true;
             }
         });
     }
