@@ -5,9 +5,12 @@ import androidx.core.content.ContextCompat;
 
 import android.graphics.Movie;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -46,9 +49,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Car item = (Car)list.getItemAtPosition(i);
-                String t = item.getTitle();
-                Toast.makeText(getApplicationContext(), "선택: "+ t, Toast.LENGTH_SHORT).show();
+                customToast(item);
             }
         });
+    }
+
+    public void customToast(Car item){
+        View layout = getLayoutInflater().inflate(R.layout.car_toast, null);//car_toast 불러오기
+        ImageView img = layout.findViewById(R.id.toast_img);
+        TextView txt = layout.findViewById(R.id.toast_txt);
+        img.setImageDrawable(item.getImage());
+        txt.setText(item.getTitle());
+
+        Toast t = new Toast(getApplicationContext());
+        t.setView(layout);
+        t.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+
+        t.show();
     }
 }
